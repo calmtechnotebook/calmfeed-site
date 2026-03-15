@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalmFeed — Be informed. Protect your calm.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --near-black: #0a0a0a;
+    --card: #141414;
+    --card2: #1a1a1a;
+    --border: #222222;
+    --border-soft: #1e1e1e;
+    --white: #ffffff;
+    --grey-1: #888888;
+    --grey-2: #555555;
+    --grey-3: #333333;
+    --accent: #c8c8c8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(80,80,80,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .logo-wrap {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    overflow: hidden;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.1s;
+  }
+
+  .logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey-1);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(44px, 8vw, 80px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.3s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-tagline {
+    font-size: clamp(15px, 2.5vw, 18px);
+    font-weight: 300;
+    color: var(--grey-1);
+    margin-top: 20px;
+    margin-bottom: 48px;
+    letter-spacing: 0.01em;
+    line-height: 1.6;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.45s;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.6s;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .btn-secondary {
+    font-size: 13px;
+    color: var(--grey-2);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .btn-secondary:hover { color: var(--grey-1); }
+
+  /* ─── SCREENSHOTS ─── */
+  .screenshots-section {
+    padding: 80px 24px 100px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .screenshots-track {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .phone-frame {
+    width: 220px;
+    height: 476px;
+    background: #000;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.8), 0 0 0 1px #111;
+    transition: transform 0.4s ease;
+  }
+
+  .phone-frame:hover { transform: translateY(-6px); }
+  .phone-frame.center { transform: scale(1.06); }
+  .phone-frame.center:hover { transform: scale(1.06) translateY(-6px); }
+
+  .phone-frame .notch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 74px; height: 20px; background: #000;
+    border-radius: 0 0 12px 12px; z-index: 10;
+  }
+
+  .phone-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  }
+
+  /* Screen status bar */
+  .s-status {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 16px 0; height: 30px; flex-shrink: 0;
+  }
+  .s-time { font-size: 10px; font-weight: 700; color: #fff; }
+  .s-icons { display: flex; align-items: center; gap: 4px; }
+
+  .s-topnav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 10px 7px; flex-shrink: 0;
+  }
+  .s-icon-btn {
+    width: 24px; height: 24px; background: #1c1c1c; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .s-icon-btn svg { stroke: #fff; fill: none; width: 12px; height: 12px; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .s-page-title { font-size: 11px; font-weight: 700; color: #fff; letter-spacing: -0.2px; }
+
+  .s-content { flex: 1; overflow: hidden; padding: 0 8px; }
+
+  /* Home screen elements */
+  .s-calm-card {
+    background: #1a1a1a; border-radius: 9px; padding: 8px 10px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 5px;
+  }
+  .s-calm-card h4 { font-size: 9.5px; font-weight: 700; color: #fff; }
+  .s-calm-card p { font-size: 7px; color: #555; }
+  .s-calm-card svg { stroke: #666; fill: none; width: 12px; height: 12px; stroke-width: 1.6; stroke-linecap: round; }
+
+  .s-feed-meta { font-size: 7px; color: #444; margin-bottom: 8px; }
+  .s-section-title { font-size: 11.5px; font-weight: 700; color: #fff; letter-spacing: -0.3px; margin-bottom: 6px; }
+
+  .s-top-card { background: #1a1a1a; border-radius: 10px; overflow: hidden; margin-bottom: 8px; padding: 8px; }
+  .s-top-card-img { width: 100%; height: 90px; border-radius: 6px; overflow: hidden; margin-bottom: 6px; }
+  .s-top-card-title { font-size: 10px; font-weight: 700; color: #fff; line-height: 1.3; letter-spacing: -0.2px; margin-bottom: 3px; }
+  .s-top-card-meta { font-size: 7px; color: #666; }
+
+  /* Chrono card */
+  .s-chrono-card {
+    background: #1a1a1a; border-radius: 9px; padding: 7px;
+    display: flex; align-items: flex-start; gap: 7px;
+  }
+  .s-chrono-img { width: 50px; height: 50px; border-radius: 6px; flex-shrink: 0; overflow: hidden; }
+  .s-chrono-title { font-size: 9px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .s-chrono-meta { font-size: 7px; color: #555; margin-top: 3px; }
+
+  /* Saved screen */
+  .s-chips { display: flex; gap: 4px; margin-bottom: 9px; overflow: hidden; }
+  .s-chip { border: 1px solid #333; border-radius: 50px; padding: 3px 9px; font-size: 7.5px; color: #fff; white-space: nowrap; font-weight: 500; }
+  .s-chip.active { background: #fff; color: #000; border-color: #fff; }
+  .s-saved-card {
+    background: #1a1a1a; border-radius: 9px; padding: 7px;
+    display: flex; align-items: flex-start; gap: 7px; margin-bottom: 6px;
+  }
+  .s-saved-img { width: 50px; height: 50px; border-radius: 6px; flex-shrink: 0; overflow: hidden; }
+  .s-saved-title { font-size: 9px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .s-saved-meta { font-size: 7px; color: #555; margin-top: 3px; }
+  .s-saved-tag { display: inline-block; background: #2a2a2a; border-radius: 50px; padding: 2px 6px; font-size: 6.5px; color: #aaa; margin-top: 4px; }
+
+  /* Pause screen */
+  .s-pause-content {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    padding: 0 14px 14px;
+  }
+  .s-pause-title { font-size: 13px; font-weight: 600; color: #fff; margin-top: 20px; margin-bottom: 26px; letter-spacing: -0.2px; }
+  .s-pause-orb {
+    width: 130px; height: 130px; border-radius: 50%;
+    background: radial-gradient(circle at 45% 42%, #5a5a5a, #2e2e2e 60%, #1e1e1e 85%);
+    box-shadow: 0 0 30px rgba(80,80,80,0.12);
+    flex-shrink: 0;
+  }
+  .s-pause-phase { font-size: 12px; font-weight: 600; color: #fff; margin-top: 18px; }
+  .s-pause-counter { font-size: 8px; color: #666; margin-top: 3px; }
+  .s-pause-spacer { flex: 1; }
+  .s-pause-btn {
+    background: #1c1c1e; border-radius: 8px; padding: 9px 0;
+    color: #fff; font-size: 10px; font-weight: 500; width: 100%; text-align: center; margin-bottom: 8px;
+  }
+
+  /* Tab bar */
+  .s-tabbar { flex-shrink: 0; padding: 5px 8px 14px; }
+  .s-tabbar-inner { background: #1a1a1a; border-radius: 16px; display: flex; justify-content: space-around; padding: 6px 3px; }
+  .s-tab { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 3px 10px; border-radius: 12px; min-width: 38px; }
+  .s-tab.active { background: #2e2e2e; }
+  .s-tab svg { width: 14px; height: 14px; fill: #fff; stroke: none; }
+  .s-tab-lbl { font-size: 6px; color: #fff; font-weight: 500; }
+
+  /* ─── FEATURES ─── */
+  .features-section {
+    padding: 60px 24px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey-2);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .section-heading em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .feature-card {
+    background: var(--card);
+    padding: 32px 28px;
+    border: 1px solid var(--border-soft);
+    transition: background 0.25s ease;
+  }
+
+  .feature-card:hover { background: var(--card2); }
+
+  .feature-card:first-child { border-radius: 16px 0 0 0; }
+  .feature-card:nth-child(2) { border-radius: 0 16px 0 0; }
+  .feature-card:nth-child(3) { border-radius: 0 0 0 16px; }
+  .feature-card:last-child { border-radius: 0 0 16px 0; }
+
+  .feature-icon {
+    width: 40px; height: 40px;
+    background: var(--card2);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+
+  .feature-icon svg {
+    stroke: var(--grey-1);
+    fill: none;
+    width: 18px; height: 18px;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .feature-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .feature-desc {
+    font-size: 13.5px;
+    color: var(--grey-1);
+    line-height: 1.6;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--border), transparent);
+    margin: 0 auto;
+  }
+
+  /* ─── PHILOSOPHY ─── */
+  .philosophy-section {
+    padding: 80px 24px;
+    max-width: 660px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .philosophy-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--accent);
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .philosophy-body {
+    font-size: 15px;
+    color: var(--grey-1);
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ─── PILLARS ─── */
+  .pillars-section {
+    padding: 40px 24px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .pillars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .pillar-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px 28px;
+    background: var(--card);
+    transition: background 0.2s ease;
+  }
+
+  .pillar-row:hover { background: var(--card2); }
+
+  .pillar-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--grey-3);
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+    min-width: 32px;
+  }
+
+  .pillar-content {}
+
+  .pillar-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .pillar-desc {
+    font-size: 13.5px;
+    color: var(--grey-1);
+    line-height: 1.6;
+  }
+
+  /* ─── BOTTOM CTA ─── */
+  .bottom-cta {
+    padding: 80px 24px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bottom-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 80%, rgba(70,70,70,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .bottom-cta-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .bottom-cta-title em { font-style: italic; color: var(--accent); }
+
+  .bottom-cta-sub {
+    font-size: 15px;
+    color: var(--grey-1);
+    margin-bottom: 40px;
+    letter-spacing: 0.01em;
+  }
+
+  .testflight-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .testflight-note {
+    font-size: 11px;
+    color: var(--grey-2);
+    margin-top: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border-soft);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-size: 12.5px;
+    color: var(--grey-2);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: var(--grey-1); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--grey-3);
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .screenshots-track {
+      gap: 12px;
+    }
+    .phone-frame {
+      width: 160px;
+      height: 347px;
+    }
+    .phone-frame.center { transform: scale(1.04); }
+    .phone-frame.center:hover { transform: scale(1.04) translateY(-4px); }
+    .features-grid { grid-template-columns: 1fr; }
+    .feature-card:first-child { border-radius: 16px 16px 0 0; }
+    .feature-card:nth-child(2) { border-radius: 0; }
+    .feature-card:nth-child(3) { border-radius: 0; }
+    .feature-card:last-child { border-radius: 0 0 16px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="logo-wrap">
+    <!-- Logo placeholder — replace src with hosted image URL -->
+    <img src="CalmFeed_Logo_1024x1024.png" alt="CalmFeed logo" />
+  </div>
+  <p class="hero-eyebrow">Calm Tech Notebook</p>
+  <h1 class="hero-title">Be informed.<br><em>Protect your calm.</em></h1>
+  <p class="hero-tagline">A minimal, privacy-first news reader for people who want to stay informed — without the anxiety, the algorithms, or the doom-scrolling.</p>
+  <div class="cta-group">
+    <a href="#testflight" class="btn-primary">
+      <!-- Apple logo -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on the App Store
+    </a>
+    <a href="#testflight" class="btn-secondary">Currently in TestFlight beta →</a>
+  </div>
+</section>
+
+<!-- ══════════════ SCREENSHOTS ══════════════ -->
+<section class="screenshots-section">
+  <div class="screenshots-track">
+
+    <!-- Phone 1 — Home -->
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="phone-inner">
+        <div class="s-status">
+          <span class="s-time">08:36</span>
+          <div class="s-icons">
+            <svg width="10" height="7" viewBox="0 0 17 11" fill="white"><rect x="0" y="5" width="3" height="6" rx="0.8"/><rect x="4.5" y="3.5" width="3" height="7.5" rx="0.8"/><rect x="9" y="1.5" width="3" height="9.5" rx="0.8"/><rect x="13.5" y="0" width="3" height="11" rx="0.8" opacity="0.3"/></svg>
+            <svg width="15" height="8" viewBox="0 0 26 13" fill="none"><rect x="0.5" y="0.5" width="22" height="12" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="2" y="2" width="9" height="9" rx="2" fill="white"/></svg>
+          </div>
+        </div>
+        <div class="s-topnav">
+          <div class="s-icon-btn"><svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="16" y2="17"/></svg></div>
+          <span class="s-page-title">Home</span>
+          <div class="s-icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        </div>
+        <div class="s-content">
+          <div class="s-calm-card">
+            <div><h4>Calm feed</h4><p>Last local refresh</p></div>
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          </div>
+          <div class="s-feed-meta">12 source(s) · 84 items</div>
+          <div class="s-section-title">Top stories</div>
+          <div class="s-top-card">
+            <div class="s-top-card-img">
+              <svg width="100%" height="90" viewBox="0 0 204 90" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#b8d4e8"/><stop offset="100%" style="stop-color:#d8eaf5"/></linearGradient></defs><rect width="204" height="90" fill="url(#g1)"/><ellipse cx="160" cy="20" rx="80" ry="40" fill="rgba(255,255,255,0.35)"/><ellipse cx="40" cy="80" rx="70" ry="30" fill="rgba(180,210,230,0.4)"/></svg>
+            </div>
+            <div class="s-top-card-title">The Technology That Respects Your Attention</div>
+            <div class="s-top-card-meta">Calm Journal · Mar 7, 2026</div>
+          </div>
+          <div class="s-section-title">Chronological</div>
+          <div class="s-chrono-card">
+            <svg class="s-chrono-img" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="50" fill="#c8e6d0" rx="6"/><ellipse cx="25" cy="35" rx="30" ry="18" fill="rgba(255,255,255,0.4)"/><circle cx="25" cy="18" rx="14" fill="rgba(160,210,170,0.5)"/></svg>
+            <div>
+              <div class="s-chrono-title">Urban Forests as a Shield Against Summer Heat</div>
+              <div class="s-chrono-meta">Diffusion Science · 8:30 AM</div>
+            </div>
+          </div>
+        </div>
+        <div class="s-tabbar"><div class="s-tabbar-inner">
+          <div class="s-tab active"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.1L1 12h3v9h6v-5h4v5h6v-9h3L12 2.1z"/></svg><span class="s-tab-lbl">Home</span></div>
+          <div class="s-tab"><svg viewBox="0 0 100 90" fill="white"><rect x="3" y="5" width="33" height="68" rx="16" transform="rotate(8 19.5 39)"/><rect x="64" y="5" width="33" height="68" rx="16" transform="rotate(-8 80.5 39)"/><rect x="33" y="12" width="34" height="9" rx="4"/><rect x="33" y="24" width="34" height="9" rx="4"/><circle cx="19" cy="63" r="12" fill="black"/><circle cx="81" cy="63" r="12" fill="black"/></svg><span class="s-tab-lbl">Discover</span></div>
+          <div class="s-tab"><svg viewBox="0 0 24 24" fill="white"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg><span class="s-tab-lbl">Saved</span></div>
+          <div class="s-tab"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="11"/></svg><span class="s-tab-lbl">Pause</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Phone 2 — Saved (center, larger) -->
+    <div class="phone-frame center">
+      <div class="notch"></div>
+      <div class="phone-inner">
+        <div class="s-status">
+          <span class="s-time">08:36</span>
+          <div class="s-icons">
+            <svg width="10" height="7" viewBox="0 0 17 11" fill="white"><rect x="0" y="5" width="3" height="6" rx="0.8"/><rect x="4.5" y="3.5" width="3" height="7.5" rx="0.8"/><rect x="9" y="1.5" width="3" height="9.5" rx="0.8"/><rect x="13.5" y="0" width="3" height="11" rx="0.8" opacity="0.3"/></svg>
+            <svg width="15" height="8" viewBox="0 0 26 13" fill="none"><rect x="0.5" y="0.5" width="22" height="12" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="2" y="2" width="9" height="9" rx="2" fill="white"/></svg>
+          </div>
+        </div>
+        <div class="s-topnav" style="justify-content:center;">
+          <span class="s-page-title">Saved</span>
+        </div>
+        <div class="s-content">
+          <div class="s-chips">
+            <div class="s-chip active">All</div>
+            <div class="s-chip">technology</div>
+            <div class="s-chip">science</div>
+            <div class="s-chip">design</div>
+          </div>
+          <div class="s-section-title" style="font-size:10px; margin-bottom:7px;">Saved links</div>
+          <div class="s-saved-card">
+            <svg class="s-saved-img" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="50" fill="#d0dff0" rx="6"/><ellipse cx="25" cy="45" rx="40" ry="20" fill="rgba(255,255,255,0.4)"/><ellipse cx="25" cy="18" rx="18" ry="13" fill="rgba(180,205,235,0.5)"/></svg>
+            <div>
+              <div class="s-saved-title">Reading Less as a Form of Freedom</div>
+              <div class="s-saved-meta">Mar 7, 2026 · calm-journal.net</div>
+            </div>
+          </div>
+          <div class="s-saved-card">
+            <svg class="s-saved-img" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="50" fill="#f0d8d8" rx="6"/><rect x="6" y="12" width="38" height="1.5" fill="rgba(180,100,100,0.2)" rx="1"/><rect x="6" y="20" width="30" height="1.5" fill="rgba(180,100,100,0.15)" rx="1"/><rect x="6" y="28" width="35" height="1.5" fill="rgba(180,100,100,0.15)" rx="1"/></svg>
+            <div>
+              <div class="s-saved-title">Designing Interfaces That Don't Exploit Attention</div>
+              <div class="s-saved-meta">Mar 6, 2026 · reorient.io</div>
+              <div class="s-saved-tag">design</div>
+            </div>
+          </div>
+          <div class="s-saved-card">
+            <svg class="s-saved-img" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="50" fill="#d4ead8" rx="6"/><circle cx="25" cy="22" rx="13" fill="rgba(255,255,255,0.45)"/><ellipse cx="25" cy="46" rx="30" ry="12" fill="rgba(160,210,170,0.4)"/></svg>
+            <div>
+              <div class="s-saved-title">RSS in 2026: The Quiet Return of a Forgotten Protocol</div>
+              <div class="s-saved-meta">Mar 5, 2026 · theprepared.org</div>
+              <div class="s-saved-tag">technology</div>
+            </div>
+          </div>
+        </div>
+        <div class="s-tabbar"><div class="s-tabbar-inner">
+          <div class="s-tab"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.1L1 12h3v9h6v-5h4v5h6v-9h3L12 2.1z"/></svg><span class="s-tab-lbl">Home</span></div>
+          <div class="s-tab"><svg viewBox="0 0 100 90" fill="white"><rect x="3" y="5" width="33" height="68" rx="16" transform="rotate(8 19.5 39)"/><rect x="64" y="5" width="33" height="68" rx="16" transform="rotate(-8 80.5 39)"/><rect x="33" y="12" width="34" height="9" rx="4"/><rect x="33" y="24" width="34" height="9" rx="4"/><circle cx="19" cy="63" r="12" fill="black"/><circle cx="81" cy="63" r="12" fill="black"/></svg><span class="s-tab-lbl">Discover</span></div>
+          <div class="s-tab active"><svg viewBox="0 0 24 24" fill="white"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg><span class="s-tab-lbl">Saved</span></div>
+          <div class="s-tab"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="11"/></svg><span class="s-tab-lbl">Pause</span></div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- Phone 3 — Pause -->
+    <div class="phone-frame">
+      <div class="notch"></div>
+      <div class="phone-inner">
+        <div class="s-status">
+          <span class="s-time">08:36</span>
+          <div class="s-icons">
+            <svg width="10" height="7" viewBox="0 0 17 11" fill="white"><rect x="0" y="5" width="3" height="6" rx="0.8"/><rect x="4.5" y="3.5" width="3" height="7.5" rx="0.8"/><rect x="9" y="1.5" width="3" height="9.5" rx="0.8"/><rect x="13.5" y="0" width="3" height="11" rx="0.8" opacity="0.3"/></svg>
+            <svg width="15" height="8" viewBox="0 0 26 13" fill="none"><rect x="0.5" y="0.5" width="22" height="12" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="2" y="2" width="9" height="9" rx="2" fill="white"/></svg>
+          </div>
+        </div>
+        <div class="s-topnav" style="justify-content:flex-end;">
+          <div class="s-icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        </div>
+        <div class="s-pause-content">
+          <div class="s-pause-title">Calm pause</div>
+          <div class="s-pause-orb"></div>
+          <div class="s-pause-phase">Inhale</div>
+          <div class="s-pause-counter">3s</div>
+          <div class="s-pause-spacer"></div>
+          <div class="s-pause-btn">Back to feed</div>
+        </div>
+        <div class="s-tabbar"><div class="s-tabbar-inner">
+          <div class="s-tab"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2.1L1 12h3v9h6v-5h4v5h6v-9h3L12 2.1z"/></svg><span class="s-tab-lbl">Home</span></div>
+          <div class="s-tab"><svg viewBox="0 0 100 90" fill="white"><rect x="3" y="5" width="33" height="68" rx="16" transform="rotate(8 19.5 39)"/><rect x="64" y="5" width="33" height="68" rx="16" transform="rotate(-8 80.5 39)"/><rect x="33" y="12" width="34" height="9" rx="4"/><rect x="33" y="24" width="34" height="9" rx="4"/><circle cx="19" cy="63" r="12" fill="black"/><circle cx="81" cy="63" r="12" fill="black"/></svg><span class="s-tab-lbl">Discover</span></div>
+          <div class="s-tab"><svg viewBox="0 0 24 24" fill="white"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg><span class="s-tab-lbl">Saved</span></div>
+          <div class="s-tab active"><svg viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="11"/></svg><span class="s-tab-lbl">Pause</span></div>
+        </div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════ FEATURES ══════════════ -->
+<section class="features-section">
+  <p class="section-eyebrow">What makes it different</p>
+  <h2 class="section-heading">Designed to <em>inform,</em><br>not to capture.</h2>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="feature-name">Privacy-first</div>
+      <div class="feature-desc">No accounts. No tracking. No data collected. Everything stays on your device, always.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="feature-name">Chronological, always</div>
+      <div class="feature-desc">No ranking algorithm deciding what you see. Your sources, in order, as they were published.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <div class="feature-name">Calm reader</div>
+      <div class="feature-desc">Articles open in a clean, distraction-free reader. No ads, no scripts, no pop-ups. Just the text.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="feature-name">Intentional pauses</div>
+      <div class="feature-desc">The Pause tab guides you through a breathing exercise before you return to reading. A moment, not a metric.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════ PHILOSOPHY ══════════════ -->
+<section class="philosophy-section">
+  <p class="philosophy-quote">"The best technology is technology that knows when to get out of the way."</p>
+  <p class="philosophy-body">CalmFeed is built on the principles of Calm Technology — a design philosophy that believes tools should work at the periphery of our attention, not compete for the center of it. No red badges. No infinite scroll. No streak counters. Just your sources, your pace, your terms.</p>
+</section>
+
+<!-- ══════════════ PILLARS ══════════════ -->
+<section class="pillars-section">
+  <div class="pillars-list">
+    <div class="pillar-row">
+      <span class="pillar-number">01</span>
+      <div class="pillar-content">
+        <div class="pillar-title">Local-first architecture</div>
+        <div class="pillar-desc">Your feeds, your saved articles, your preferences — all stored locally on your iPhone. No cloud sync required, no server dependency.</div>
+      </div>
+    </div>
+    <div class="pillar-row">
+      <span class="pillar-number">02</span>
+      <div class="pillar-content">
+        <div class="pillar-title">You choose your sources</div>
+        <div class="pillar-desc">Add any RSS feed, YouTube channel, Mastodon account, or Bluesky profile. No suggestions, no sponsored sources, no limits.</div>
+      </div>
+    </div>
+    <div class="pillar-row">
+      <span class="pillar-number">03</span>
+      <div class="pillar-content">
+        <div class="pillar-title">No manipulation</div>
+        <div class="pillar-desc">CalmFeed does not optimize for engagement, session time, or any other metric. It is designed to be put down as easily as picked up.</div>
+      </div>
+    </div>
+    <div class="pillar-row">
+      <span class="pillar-number">04</span>
+      <div class="pillar-content">
+        <div class="pillar-title">Slow information by design</div>
+        <div class="pillar-desc">Reading is not a competition. CalmFeed encourages deliberate, unhurried engagement with the information that actually matters to you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BOTTOM CTA ══════════════ -->
+<section class="bottom-cta" id="testflight">
+  <h2 class="bottom-cta-title">Stay informed.<br><em>Stay calm.</em></h2>
+  <p class="bottom-cta-sub">Available soon on the App Store. Join the beta on TestFlight today.</p>
+  <div class="testflight-badge">
+    <a href="#" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Join TestFlight Beta
+    </a>
+    <p class="testflight-note">Free · iOS only · No data collected</p>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-links">
+    <a href="#">FAQ</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Use</a>
+    <a href="https://calmtechnotebook.substack.com" target="_blank">Blog</a>
+  </div>
+  <p class="footer-copy">© 2026 Calm Tech Notebook · CalmFeed is a product of Calm Tech Notebook</p>
+</footer>
+
+</body>
+</html>
