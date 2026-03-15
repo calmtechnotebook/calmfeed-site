@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -594,63 +595,72 @@
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
 
-    /* Hero */
-    .hero { padding: 40px 20px 48px; min-height: auto; }
-    .logo-wrap { width: 72px; height: 72px; border-radius: 16px; margin-bottom: 24px; }
-    .hero-eyebrow { font-size: 10px; margin-bottom: 14px; }
-    .hero-title { font-size: 48px; margin-bottom: 6px; }
-    .hero-subtitle { font-size: 22px; }
-    .hero-tagline { font-size: 15px; margin-top: 16px; margin-bottom: 36px; }
-    .btn-primary { font-size: 15px; padding: 14px 24px; }
-
-    /* Screenshots — hide side phones, center only */
-    .screenshots-section { padding: 40px 20px 60px; }
-    .screenshots-track { gap: 0; justify-content: center; }
-    .phone-frame { display: none; }
-    .phone-frame.center {
-      display: flex;
-      transform: none;
-      width: 280px;
-      height: 607px;
+    /* Hero — full width, no excess top space */
+    .hero {
+      padding: 40px 20px 48px;
+      min-height: auto;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .phone-frame.center:hover { transform: translateY(-4px); }
+    .logo-wrap { width: 72px; height: 72px; border-radius: 16px; margin-bottom: 20px; }
+    .hero-eyebrow { font-size: 10px; margin-bottom: 12px; }
+    .hero-title { font-size: 42px; margin-bottom: 4px; }
+    .hero-subtitle { font-size: 20px; }
+    .hero-tagline { font-size: 14px; margin-top: 14px; margin-bottom: 32px; max-width: 100%; }
+    .btn-primary { font-size: 15px; padding: 14px 22px; width: 100%; justify-content: center; box-sizing: border-box; }
+    .cta-group { width: 100%; }
 
-    /* Features — single column */
-    .features-section { padding: 40px 20px 60px; }
-    .features-grid { grid-template-columns: 1fr; }
-    .feature-card { padding: 24px 20px; }
+    /* Screenshots — 3 côte à côte mais plus petits */
+    .screenshots-section { padding: 32px 12px 48px; overflow: hidden; }
+    .screenshots-track { gap: 10px; justify-content: center; flex-wrap: nowrap; }
+    .phone-frame { display: flex; width: 100px; height: 217px; border-radius: 16px; }
+    .phone-frame.center { transform: scale(1.06); width: 100px; height: 217px; }
+    .phone-frame.center:hover { transform: scale(1.06) translateY(-3px); }
+
+    /* Features — 1 colonne, full width */
+    .features-section { padding: 40px 16px 48px; width: 100%; box-sizing: border-box; }
+    .section-heading { font-size: 26px; margin-bottom: 28px; }
+    .features-grid { grid-template-columns: 1fr; width: 100%; }
+    .feature-card { padding: 22px 18px; }
     .feature-card:first-child { border-radius: 16px 16px 0 0; }
-    .feature-card:nth-child(2) { border-radius: 0; }
-    .feature-card:nth-child(3) { border-radius: 0; }
-    .feature-card:nth-child(4) { border-radius: 0; }
+    .feature-card:nth-child(2),
+    .feature-card:nth-child(3),
+    .feature-card:nth-child(4),
     .feature-card:nth-child(5) { border-radius: 0; }
     .feature-card:last-child { border-radius: 0 0 16px 16px; }
 
-    /* Philosophy */
-    .philosophy-section { padding: 48px 20px; }
-    .philosophy-quote { font-size: 20px; }
-    .philosophy-body { font-size: 14px; }
+    /* Philosophy — full width */
+    .philosophy-section {
+      padding: 48px 20px;
+      width: 100%;
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+    .philosophy-quote { font-size: 19px; }
+    .philosophy-body { font-size: 13px; max-width: 100%; }
 
     /* Pillars */
-    .pillars-section { padding: 20px 20px 60px; }
-    .pillar-row { padding: 20px; gap: 16px; }
-    .pillar-number { font-size: 22px; }
+    .pillars-section { padding: 16px 16px 48px; }
+    .pillar-row { padding: 18px; gap: 14px; }
+    .pillar-number { font-size: 20px; min-width: 24px; }
     .pillar-title { font-size: 14px; }
     .pillar-desc { font-size: 13px; }
 
-    /* Bottom CTA */
-    .bottom-cta { padding: 60px 20px 80px; }
-    .bottom-cta-title { font-size: 36px; }
-    .bottom-cta-sub { font-size: 14px; }
-
-    /* Section headings */
-    .section-heading { font-size: 28px; margin-bottom: 36px; }
+    /* Bottom CTA — full width */
+    .bottom-cta {
+      padding: 56px 20px 72px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .bottom-cta-title { font-size: 34px; }
+    .bottom-cta-sub { font-size: 14px; max-width: 100%; }
+    .btn-primary { max-width: 100%; }
 
     /* Footer */
-    footer { padding: 28px 20px; gap: 14px; }
-    .footer-links { gap: 16px; }
+    footer { padding: 24px 20px; gap: 12px; }
+    .footer-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
     .footer-links a { font-size: 12px; }
-    .footer-copy { font-size: 10px; }
+    .footer-copy { font-size: 10px; text-align: center; }
   }
 </style>
 
