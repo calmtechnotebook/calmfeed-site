@@ -593,20 +593,64 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 700px) {
-    .screenshots-track {
-      gap: 12px;
+
+    /* Hero */
+    .hero { padding: 60px 20px 48px; }
+    .logo-wrap { width: 72px; height: 72px; border-radius: 16px; margin-bottom: 24px; }
+    .hero-eyebrow { font-size: 10px; margin-bottom: 14px; }
+    .hero-title { font-size: 48px; margin-bottom: 6px; }
+    .hero-subtitle { font-size: 22px; }
+    .hero-tagline { font-size: 15px; margin-top: 16px; margin-bottom: 36px; }
+    .btn-primary { font-size: 15px; padding: 14px 24px; }
+
+    /* Screenshots — stack vertically, show only center phone */
+    .screenshots-section { padding: 40px 20px 60px; }
+    .screenshots-track { gap: 0; justify-content: center; }
+    .phone-frame { display: none; }
+    .phone-frame.center {
+      display: flex;
+      transform: none;
+      width: 260px;
+      height: 564px;
     }
-    .phone-frame {
-      width: 160px;
-      height: 347px;
-    }
-    .phone-frame.center { transform: scale(1.04); }
-    .phone-frame.center:hover { transform: scale(1.04) translateY(-4px); }
+    .phone-frame.center:hover { transform: translateY(-4px); }
+
+    /* Features — single column */
+    .features-section { padding: 40px 20px 60px; }
     .features-grid { grid-template-columns: 1fr; }
+    .feature-card { padding: 24px 20px; }
     .feature-card:first-child { border-radius: 16px 16px 0 0; }
     .feature-card:nth-child(2) { border-radius: 0; }
     .feature-card:nth-child(3) { border-radius: 0; }
+    .feature-card:nth-child(4) { border-radius: 0; }
+    .feature-card:nth-child(5) { border-radius: 0; }
     .feature-card:last-child { border-radius: 0 0 16px 16px; }
+
+    /* Philosophy */
+    .philosophy-section { padding: 48px 20px; }
+    .philosophy-quote { font-size: 20px; }
+    .philosophy-body { font-size: 14px; }
+
+    /* Pillars */
+    .pillars-section { padding: 20px 20px 60px; }
+    .pillar-row { padding: 20px; gap: 16px; }
+    .pillar-number { font-size: 22px; }
+    .pillar-title { font-size: 14px; }
+    .pillar-desc { font-size: 13px; }
+
+    /* Bottom CTA */
+    .bottom-cta { padding: 60px 20px 80px; }
+    .bottom-cta-title { font-size: 36px; }
+    .bottom-cta-sub { font-size: 14px; }
+
+    /* Section headings */
+    .section-heading { font-size: 28px; margin-bottom: 36px; }
+
+    /* Footer */
+    footer { padding: 28px 20px; gap: 14px; }
+    .footer-links { gap: 16px; }
+    .footer-links a { font-size: 12px; }
+    .footer-copy { font-size: 10px; }
   }
 </style>
 
