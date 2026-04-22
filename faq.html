@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalmFeed — FAQ</title>
+<meta name="description" content="Frequently asked questions about CalmFeed — a privacy-first, local-first RSS reader for iOS.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #000000;
+    --near-black: #0a0a0a;
+    --card: #141414;
+    --card2: #1a1a1a;
+    --border: #222222;
+    --border-soft: #1e1e1e;
+    --white: #ffffff;
+    --grey-1: #888888;
+    --grey-2: #555555;
+    --grey-3: #333333;
+    --accent: #c8c8c8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--border-soft);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--white);
+  }
+
+  .header-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .header-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: screen;
+  }
+
+  .header-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .lang-toggle {
+    display: flex;
+    gap: 2px;
+    background: var(--card);
+    border-radius: 50px;
+    padding: 3px;
+    border: 1px solid var(--border-soft);
+  }
+
+  .lang-btn {
+    background: none;
+    border: none;
+    color: var(--grey-2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .lang-btn.active {
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .lang-btn:not(.active):hover {
+    color: var(--grey-1);
+  }
+
+  /* ─── INTRO ─── */
+  .page-intro {
+    text-align: center;
+    padding: 80px 24px 40px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .page-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey-2);
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 7vw, 64px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .page-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .page-lede {
+    font-size: 15px;
+    color: var(--grey-1);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ─── FAQ LIST ─── */
+  .faq-section {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .faq-group {
+    margin-bottom: 48px;
+  }
+
+  .faq-group-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey-2);
+    margin-bottom: 20px;
+    padding-left: 4px;
+  }
+
+  .faq-list {
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border-soft);
+    background: var(--card);
+    transition: background 0.2s ease;
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+  .faq-item:hover { background: var(--card2); }
+
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    padding: 22px 28px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--grey-1);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq-icon::before {
+    width: 12px; height: 1px;
+  }
+
+  .faq-icon::after {
+    width: 1px; height: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item.open .faq-icon::after {
+    transform: translate(-50%, -50%) scaleY(0);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 600px;
+  }
+
+  .faq-answer-inner {
+    padding: 0 28px 24px;
+    font-size: 14px;
+    color: var(--grey-1);
+    line-height: 1.75;
+  }
+
+  .faq-answer-inner p + p {
+    margin-top: 12px;
+  }
+
+  .faq-answer-inner a {
+    color: var(--white);
+    text-decoration: underline;
+    text-decoration-color: var(--grey-3);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .faq-answer-inner a:hover {
+    text-decoration-color: var(--grey-1);
+  }
+
+  /* ─── BOTTOM CTA ─── */
+  .page-cta {
+    text-align: center;
+    padding: 60px 24px 80px;
+    border-top: 1px solid var(--border-soft);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .page-cta-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .page-cta-title em { font-style: italic; color: var(--accent); }
+
+  .page-cta-sub {
+    font-size: 14px;
+    color: var(--grey-1);
+    margin-bottom: 32px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border-soft);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-size: 12.5px;
+    color: var(--grey-2);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: var(--grey-1); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--grey-3);
+    letter-spacing: 0.03em;
+  }
+
+  /* Language visibility */
+  [data-lang] { display: none; }
+  html[lang="en"] [data-lang="en"] { display: block; }
+  html[lang="fr"] [data-lang="fr"] { display: block; }
+  html[lang="en"] .faq-answer-inner [data-lang="en"],
+  html[lang="fr"] .faq-answer-inner [data-lang="fr"] { display: block; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .page-header { padding: 20px 20px; }
+    .header-name { font-size: 16px; }
+    .page-intro { padding: 50px 20px 30px; }
+    .faq-section { padding: 20px 16px 60px; }
+    .faq-question { padding: 20px 20px; font-size: 14px; }
+    .faq-answer-inner { padding: 0 20px 20px; font-size: 13.5px; }
+    .lang-btn { padding: 5px 10px; font-size: 10px; }
+  }
+</style>
+</head>
+
+<body>
+
+<header class="page-header">
+  <a href="index.html" class="header-brand">
+    <div class="header-logo">
+      <img src="https://raw.githubusercontent.com/calmtechnotebook/calmfeed/main/logo.png" alt="CalmFeed" onerror="this.style.display='none'">
+    </div>
+    <span class="header-name">CalmFeed</span>
+  </a>
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button class="lang-btn active" data-lang-btn="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang-btn="fr" onclick="setLang('fr')">FR</button>
+  </div>
+</header>
+
+<!-- ══════════════ INTRO ══════════════ -->
+<section class="page-intro">
+  <p class="page-eyebrow" data-lang="en">Frequently asked questions</p>
+  <p class="page-eyebrow" data-lang="fr">Questions fréquentes</p>
+
+  <h1 class="page-title" data-lang="en">Questions, <em>answered.</em></h1>
+  <h1 class="page-title" data-lang="fr">Les questions, <em>les réponses.</em></h1>
+
+  <p class="page-lede" data-lang="en">Everything you might want to know about how CalmFeed works, what it collects, and why it's built the way it is.</p>
+  <p class="page-lede" data-lang="fr">Tout ce que vous aimeriez savoir sur le fonctionnement de CalmFeed, ce qu'il collecte, et les raisons de sa conception.</p>
+</section>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<section class="faq-section">
+
+  <!-- GROUP 1: The app -->
+  <div class="faq-group">
+    <div class="faq-group-label" data-lang="en">The app</div>
+    <div class="faq-group-label" data-lang="fr">L'application</div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">What is CalmFeed?</span>
+          <span data-lang="fr">Qu'est-ce que CalmFeed?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">CalmFeed is a privacy-first, local-first RSS reader for iPhone, iPad, and Apple Silicon Mac. It aggregates publicly available content from RSS feeds, YouTube channels, Mastodon accounts, and Bluesky profiles — and presents everything chronologically, without algorithms, ads, or tracking.</p>
+            <p data-lang="fr">CalmFeed est un lecteur RSS axé sur la vie privée et l'approche local-first, pour iPhone, iPad et Mac Apple Silicon. Il agrège du contenu public provenant de flux RSS, chaînes YouTube, comptes Mastodon et profils Bluesky — et l'affiche en ordre chronologique, sans algorithme, publicité ni pistage.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Which devices are supported?</span>
+          <span data-lang="fr">Quels appareils sont pris en charge?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">CalmFeed runs natively on iPhone, iPad, and Apple Silicon Macs. It is not available on Android or the web, and there are no plans to port it to those platforms at this time.</p>
+            <p data-lang="fr">CalmFeed fonctionne nativement sur iPhone, iPad et Mac Apple Silicon. L'app n'est pas disponible sur Android ni sur le web, et aucun portage vers ces plateformes n'est prévu pour le moment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Do I need to create an account?</span>
+          <span data-lang="fr">Dois-je créer un compte?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">No. CalmFeed does not require any account, sign-up, or email. You install the app, add your sources, and start reading. Your data stays on your device.</p>
+            <p data-lang="fr">Non. CalmFeed ne demande aucun compte, aucune inscription, aucun courriel. Vous installez l'app, ajoutez vos sources, et vous lisez. Vos données restent sur votre appareil.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Is there a limit on how many sources I can add?</span>
+          <span data-lang="fr">Y a-t-il une limite au nombre de sources que je peux ajouter?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">No. You can add as many sources as you want, on the free tier or on Premium. Restricting access to information would contradict CalmFeed's calm tech philosophy.</p>
+            <p data-lang="fr">Non. Vous pouvez ajouter autant de sources que vous voulez, en version gratuite comme en version Premium. Restreindre l'accès à l'information serait contraire à la philosophie calm tech de CalmFeed.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GROUP 2: Privacy & data -->
+  <div class="faq-group">
+    <div class="faq-group-label" data-lang="en">Privacy & data</div>
+    <div class="faq-group-label" data-lang="fr">Vie privée et données</div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">What data does CalmFeed collect?</span>
+          <span data-lang="fr">Quelles données CalmFeed collecte-t-il?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">None. CalmFeed does not operate any server that collects personal data. It does not track your reading habits, device identifiers, location, or usage. All app data, preferences, sources, and authentication tokens are stored locally on your device.</p>
+            <p data-lang="fr">Aucune. CalmFeed n'opère aucun serveur qui collecte des données personnelles. L'app ne suit ni vos habitudes de lecture, ni les identifiants de votre appareil, ni votre localisation, ni votre utilisation. Toutes les données, préférences, sources et jetons d'authentification sont stockés localement sur votre appareil.</p>
+            <p data-lang="en">For full details, see our <a href="privacy.html">Privacy Policy</a>.</p>
+            <p data-lang="fr">Pour les détails complets, consultez notre <a href="privacy.html">politique de confidentialité</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Is CalmFeed GDPR and Law 25 compliant?</span>
+          <span data-lang="fr">CalmFeed est-il conforme au RGPD et à la Loi 25?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">Yes. CalmFeed is designed to comply with major privacy frameworks — including GDPR (European Union), CCPA (California), PIPEDA (Canada), and Law 25 (Quebec) — by minimizing data collection at the architectural level. The simplest way to be compliant is to not collect data in the first place.</p>
+            <p data-lang="fr">Oui. CalmFeed est conçu pour se conformer aux grands cadres de protection de la vie privée — dont le RGPD (Union européenne), le CCPA (Californie), la LPRPDE (Canada) et la Loi 25 (Québec) — en minimisant la collecte de données au niveau architectural. La façon la plus simple d'être conforme, c'est de ne pas collecter de données.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">What about third-party sources like YouTube or Mastodon?</span>
+          <span data-lang="fr">Qu'en est-il des sources tierces comme YouTube ou Mastodon?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">When you add a YouTube channel, Mastodon account, Bluesky profile, or RSS feed, CalmFeed fetches public content directly from those sources. Your interactions with those platforms are governed by their own privacy policies and terms of service.</p>
+            <p data-lang="fr">Lorsque vous ajoutez une chaîne YouTube, un compte Mastodon, un profil Bluesky ou un flux RSS, CalmFeed récupère le contenu public directement auprès de ces sources. Vos interactions avec ces plateformes sont régies par leurs propres politiques de confidentialité et conditions d'utilisation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">What happens if I delete the app?</span>
+          <span data-lang="fr">Que se passe-t-il si je supprime l'app?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">Because everything is stored locally, uninstalling CalmFeed deletes all of your data: your sources, saved articles, and preferences. To avoid losing anything, export an OPML or JSON backup before uninstalling.</p>
+            <p data-lang="fr">Comme tout est stocké localement, supprimer CalmFeed efface toutes vos données : vos sources, articles sauvegardés et préférences. Pour ne rien perdre, exportez une sauvegarde OPML ou JSON avant de désinstaller.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GROUP 3: Subscriptions -->
+  <div class="faq-group">
+    <div class="faq-group-label" data-lang="en">Subscriptions</div>
+    <div class="faq-group-label" data-lang="fr">Abonnements</div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">What's the difference between free and Premium?</span>
+          <span data-lang="fr">Quelle est la différence entre la version gratuite et Premium?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">The free tier gives you everything you need for calm reading: Home, Discover, Saved, Pause, and unlimited sources. Premium unlocks thematic dossiers, exclusive themes, custom fonts, automatic backup, Mastodon and Bluesky interactions, calm reading statistics, and Extreme Calm mode with Quiet Hours.</p>
+            <p data-lang="fr">La version gratuite vous donne tout le nécessaire pour une lecture calme : Accueil, Découvrir, Sauvegardés, Pause, et sources illimitées. Premium débloque les dossiers thématiques, les thèmes exclusifs, les polices personnalisées, la sauvegarde automatique, les interactions Mastodon et Bluesky, les statistiques de lecture calme, et le mode Calme extrême avec Heures silencieuses.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">How much does Premium cost?</span>
+          <span data-lang="fr">Combien coûte Premium?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">CalmFeed Premium is $4.99 USD per month or $49.99 USD per year. Prices may vary slightly in other regions based on Apple's local pricing tiers.</p>
+            <p data-lang="fr">CalmFeed Premium coûte 4,99 $ US par mois ou 49,99 $ US par année. Les prix peuvent varier légèrement dans d'autres régions selon les paliers tarifaires locaux d'Apple.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Is there a free trial?</span>
+          <span data-lang="fr">Y a-t-il une période d'essai gratuite?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">There is no formal trial period. The free tier is fully usable indefinitely — you can read calmly for as long as you want without paying. Premium is optional and supports ongoing development.</p>
+            <p data-lang="fr">Il n'y a pas de période d'essai formelle. La version gratuite est entièrement utilisable indéfiniment — vous pouvez lire calmement aussi longtemps que vous voulez sans payer. Premium est optionnel et contribue au développement continu.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">How do I cancel my subscription?</span>
+          <span data-lang="fr">Comment annuler mon abonnement?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">Subscriptions are managed through your Apple ID. Open the Settings app on your iPhone → tap your name → Subscriptions → CalmFeed → Cancel. Your Premium features remain active until the end of the current billing period.</p>
+            <p data-lang="fr">Les abonnements sont gérés par votre identifiant Apple. Ouvrez l'app Réglages sur votre iPhone → touchez votre nom → Abonnements → CalmFeed → Annuler. Les fonctionnalités Premium restent actives jusqu'à la fin de la période de facturation en cours.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GROUP 4: Technical -->
+  <div class="faq-group">
+    <div class="faq-group-label" data-lang="en">Technical</div>
+    <div class="faq-group-label" data-lang="fr">Aspects techniques</div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Can I sync my feeds across devices?</span>
+          <span data-lang="fr">Puis-je synchroniser mes flux entre plusieurs appareils?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">CalmFeed does not use iCloud Sync or any cloud synchronization. This is a deliberate design choice: local-first means your data never leaves your device. To move your setup between devices, export an OPML or JSON backup and import it on the other device.</p>
+            <p data-lang="fr">CalmFeed n'utilise pas iCloud Sync ni aucune synchronisation en ligne. C'est un choix de conception délibéré : local-first, ça veut dire que vos données ne quittent jamais votre appareil. Pour transférer votre configuration, exportez une sauvegarde OPML ou JSON et importez-la sur l'autre appareil.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">How do I back up my data?</span>
+          <span data-lang="fr">Comment sauvegarder mes données?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">Every user can manually export an OPML file (for sources) or a JSON file (for the full app state). Premium adds automatic backup. Files stay on your device or in a storage location you explicitly choose.</p>
+            <p data-lang="fr">Tous les utilisateurs peuvent exporter manuellement un fichier OPML (pour les sources) ou un fichier JSON (pour l'état complet de l'app). Premium ajoute la sauvegarde automatique. Les fichiers restent sur votre appareil ou dans un emplacement que vous choisissez explicitement.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Does CalmFeed work offline?</span>
+          <span data-lang="fr">CalmFeed fonctionne-t-il hors ligne?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">Yes. Already-fetched articles are available offline. An internet connection is only needed to refresh your sources and load new content.</p>
+            <p data-lang="fr">Oui. Les articles déjà récupérés sont disponibles hors ligne. Une connexion internet n'est nécessaire que pour actualiser vos sources et charger du nouveau contenu.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Is the app open source?</span>
+          <span data-lang="fr">L'application est-elle à code ouvert?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">Not currently. CalmFeed is a closed-source indie product developed by Calm Tech Notebook. Certain components and documentation may be shared publicly in the future.</p>
+            <p data-lang="fr">Pas pour le moment. CalmFeed est un produit indie à code fermé développé par Calm Tech Notebook. Certains composants et documentation pourraient être partagés publiquement dans le futur.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GROUP 5: Support -->
+  <div class="faq-group">
+    <div class="faq-group-label" data-lang="en">Support</div>
+    <div class="faq-group-label" data-lang="fr">Support</div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">How do I report a bug or suggest a feature?</span>
+          <span data-lang="fr">Comment signaler un bug ou suggérer une fonctionnalité?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">Write to <a href="mailto:tristan.audet@proton.me">tristan.audet@proton.me</a>. CalmFeed is developed by one person, so responses may take a little time — but every message is read.</p>
+            <p data-lang="fr">Écrivez à <a href="mailto:tristan.audet@proton.me">tristan.audet@proton.me</a>. CalmFeed est développé par une seule personne, les réponses peuvent donc prendre un peu de temps — mais chaque message est lu.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span data-lang="en">Who builds CalmFeed?</span>
+          <span data-lang="fr">Qui développe CalmFeed?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p data-lang="en">CalmFeed is designed and developed by Tristan, a solo developer based in Quebec, Canada, under the Calm Tech Notebook brand. It is registered as a sole proprietorship in Quebec.</p>
+            <p data-lang="fr">CalmFeed est conçu et développé par Tristan, un développeur solo basé au Québec, au Canada, sous la marque Calm Tech Notebook. L'entreprise est enregistrée au Québec comme entreprise individuelle.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════ CTA ══════════════ -->
+<section class="page-cta">
+  <h2 class="page-cta-title" data-lang="en">Still have a <em>question?</em></h2>
+  <h2 class="page-cta-title" data-lang="fr">Une autre <em>question?</em></h2>
+
+  <p class="page-cta-sub" data-lang="en">We read every message. No auto-replies, no support bots.</p>
+  <p class="page-cta-sub" data-lang="fr">On lit chaque message. Pas de réponse automatique, pas de robot.</p>
+
+  <a href="mailto:tristan.audet@proton.me" class="btn-primary">
+    <span data-lang="en">Contact us</span>
+    <span data-lang="fr">Nous écrire</span>
+  </a>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html" data-lang="en">Home</a>
+    <a href="index.html" data-lang="fr">Accueil</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html" data-lang="en">Privacy Policy</a>
+    <a href="privacy.html" data-lang="fr">Confidentialité</a>
+    <a href="terms.html" data-lang="en">Terms of Use</a>
+    <a href="terms.html" data-lang="fr">Conditions</a>
+    <a href="https://calmtechnotebook.substack.com" target="_blank">Blog</a>
+  </div>
+  <p class="footer-copy">© 2026 Calm Tech Notebook · CalmFeed</p>
+</footer>
+
+<script>
+  // Toggle FAQ items
+  function toggleFaq(btn) {
+    btn.parentElement.classList.toggle('open');
+  }
+
+  // Language switching
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang-btn]').forEach(b => {
+      b.classList.toggle('active', b.dataset.langBtn === lang);
+    });
+    try { localStorage.setItem('calmfeed-lang', lang); } catch (e) {}
+  }
+
+  // Init from saved preference or browser
+  (function() {
+    let lang = 'en';
+    try {
+      const saved = localStorage.getItem('calmfeed-lang');
+      if (saved === 'en' || saved === 'fr') {
+        lang = saved;
+      } else if (navigator.language && navigator.language.toLowerCase().startsWith('fr')) {
+        lang = 'fr';
+      }
+    } catch (e) {}
+    setLang(lang);
+  })();
+</script>
+
+</body>
+</html>
