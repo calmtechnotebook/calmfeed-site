@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalmFeed — Terms & Conditions</title>
+<meta name="description" content="CalmFeed Terms and Conditions — governing the use of the application.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #000000;
+    --near-black: #0a0a0a;
+    --card: #141414;
+    --card2: #1a1a1a;
+    --border: #222222;
+    --border-soft: #1e1e1e;
+    --white: #ffffff;
+    --grey-1: #888888;
+    --grey-2: #555555;
+    --grey-3: #333333;
+    --accent: #c8c8c8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--border-soft);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--white);
+  }
+
+  .header-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .header-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: screen;
+  }
+
+  .header-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .lang-toggle {
+    display: flex;
+    gap: 2px;
+    background: var(--card);
+    border-radius: 50px;
+    padding: 3px;
+    border: 1px solid var(--border-soft);
+  }
+
+  .lang-btn {
+    background: none;
+    border: none;
+    color: var(--grey-2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .lang-btn.active {
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .lang-btn:not(.active):hover {
+    color: var(--grey-1);
+  }
+
+  /* ─── INTRO ─── */
+  .page-intro {
+    text-align: center;
+    padding: 80px 24px 40px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .page-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--grey-2);
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 7vw, 64px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .page-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .page-lede {
+    font-size: 15px;
+    color: var(--grey-1);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 12px;
+  }
+
+  .last-updated {
+    font-size: 11px;
+    color: var(--grey-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+
+  /* ─── LEGAL BODY ─── */
+  .legal-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .legal-article {
+    border-top: 1px solid var(--border-soft);
+    padding: 32px 0;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+
+  .legal-article:last-child {
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .legal-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--grey-3);
+    flex-shrink: 0;
+    line-height: 1;
+    margin-top: 2px;
+    min-width: 40px;
+  }
+
+  .legal-content {
+    flex: 1;
+  }
+
+  .legal-heading {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .legal-body {
+    font-size: 14px;
+    color: var(--grey-1);
+    line-height: 1.75;
+  }
+
+  .legal-body p + p {
+    margin-top: 12px;
+  }
+
+  .legal-body a {
+    color: var(--white);
+    text-decoration: underline;
+    text-decoration-color: var(--grey-3);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .legal-body a:hover {
+    text-decoration-color: var(--grey-1);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border-soft);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-size: 12.5px;
+    color: var(--grey-2);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: var(--grey-1); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--grey-3);
+    letter-spacing: 0.03em;
+  }
+
+  /* Language visibility */
+  [data-lang] { display: none; }
+  html[lang="en"] [data-lang="en"] { display: block; }
+  html[lang="fr"] [data-lang="fr"] { display: block; }
+  html[lang="en"] .legal-body [data-lang="en"],
+  html[lang="fr"] .legal-body [data-lang="fr"] { display: block; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .page-header { padding: 20px 20px; }
+    .header-name { font-size: 16px; }
+    .page-intro { padding: 50px 20px 30px; }
+    .legal-section { padding: 20px 16px 60px; }
+    .legal-article { gap: 16px; padding: 24px 0; }
+    .legal-number { font-size: 22px; min-width: 28px; }
+    .lang-btn { padding: 5px 10px; font-size: 10px; }
+  }
+</style>
+</head>
+
+<body>
+
+<header class="page-header">
+  <a href="index.html" class="header-brand">
+    <div class="header-logo">
+      <img src="https://raw.githubusercontent.com/calmtechnotebook/calmfeed/main/logo.png" alt="CalmFeed" onerror="this.style.display='none'">
+    </div>
+    <span class="header-name">CalmFeed</span>
+  </a>
+  <div class="lang-toggle" role="group" aria-label="Language">
+    <button class="lang-btn active" data-lang-btn="en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" data-lang-btn="fr" onclick="setLang('fr')">FR</button>
+  </div>
+</header>
+
+<!-- ══════════════ INTRO ══════════════ -->
+<section class="page-intro">
+  <p class="page-eyebrow" data-lang="en">Terms &amp; Conditions</p>
+  <p class="page-eyebrow" data-lang="fr">Conditions d'utilisation</p>
+
+  <h1 class="page-title" data-lang="en">The <em>ground rules.</em></h1>
+  <h1 class="page-title" data-lang="fr">Les <em>règles du jeu.</em></h1>
+
+  <p class="page-lede" data-lang="en">Plain-language terms that govern the use of CalmFeed. By installing or using the app, you accept them.</p>
+  <p class="page-lede" data-lang="fr">Des conditions en langage clair qui encadrent l'utilisation de CalmFeed. En installant ou en utilisant l'app, vous les acceptez.</p>
+
+  <p class="last-updated" data-lang="en">Last updated: February 22, 2026</p>
+  <p class="last-updated" data-lang="fr">Dernière mise à jour : 22 février 2026</p>
+</section>
+
+<!-- ══════════════ LEGAL BODY ══════════════ -->
+<section class="legal-section">
+
+  <article class="legal-article">
+    <span class="legal-number">01</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Acceptance</h2>
+      <h2 class="legal-heading" data-lang="fr">Acceptation</h2>
+      <div class="legal-body">
+        <p data-lang="en">By downloading, installing, or using CalmFeed (the "Application"), you agree to these Terms. If you do not agree, do not install or use the Application.</p>
+        <p data-lang="fr">En téléchargeant, en installant ou en utilisant CalmFeed (l'« Application »), vous acceptez les présentes conditions. Si vous n'êtes pas d'accord, veuillez ne pas installer ni utiliser l'Application.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="legal-article">
+    <span class="legal-number">02</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Description of the service</h2>
+      <h2 class="legal-heading" data-lang="fr">Description du service</h2>
+      <div class="legal-body">
+        <p data-lang="en">CalmFeed aggregates publicly available content from third-party sources, including RSS feeds, YouTube channels, Mastodon accounts, and Bluesky profiles. The Application does not host or control this content; it displays it chronologically on your device.</p>
+        <p data-lang="fr">CalmFeed agrège du contenu public provenant de sources tierces, notamment des flux RSS, des chaînes YouTube, des comptes Mastodon et des profils Bluesky. L'Application n'héberge ni ne contrôle ce contenu ; elle l'affiche de façon chronologique sur votre appareil.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="legal-article">
+    <span class="legal-number">03</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Third-party content</h2>
+      <h2 class="legal-heading" data-lang="fr">Contenu tiers</h2>
+      <div class="legal-body">
+        <p data-lang="en">All third-party content remains the responsibility of its respective publishers. CalmFeed accepts no responsibility for its accuracy, legality, or availability. If a source stops publishing or becomes unavailable, CalmFeed cannot guarantee continued access to it.</p>
+        <p data-lang="fr">Tout contenu tiers demeure sous la responsabilité de ses éditeurs respectifs. CalmFeed n'assume aucune responsabilité quant à son exactitude, sa légalité ou sa disponibilité. Si une source cesse de publier ou devient indisponible, CalmFeed ne peut garantir la continuité de l'accès à celle-ci.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="legal-article">
+    <span class="legal-number">04</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Social integrations</h2>
+      <h2 class="legal-heading" data-lang="fr">Intégrations sociales</h2>
+      <div class="legal-body">
+        <p data-lang="en">Social interactions are performed via official APIs with your connected accounts. CalmFeed does not store your passwords. Your use of third-party platforms through CalmFeed — including but not limited to YouTube, Mastodon, and Bluesky — is subject to the terms of service and privacy policies of those platforms.</p>
+        <p data-lang="fr">Les interactions sociales sont effectuées via des API officielles avec les comptes que vous connectez. CalmFeed ne stocke pas vos mots de passe. Votre utilisation des plateformes tierces via CalmFeed — y compris, sans s'y limiter, YouTube, Mastodon et Bluesky — est assujettie aux conditions d'utilisation et aux politiques de confidentialité de ces plateformes.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="legal-article">
+    <span class="legal-number">05</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Subscriptions</h2>
+      <h2 class="legal-heading" data-lang="fr">Abonnements</h2>
+      <div class="legal-body">
+        <p data-lang="en">Premium subscriptions are processed through the Apple App Store using Apple's in-app purchase system. They renew automatically at the end of each billing period unless you cancel through your Apple ID at least 24 hours before the end of the current period. Cancellation and refund policies are governed by the terms of the Apple App Store.</p>
+        <p data-lang="fr">Les abonnements Premium sont traités par l'App Store d'Apple au moyen du système d'achats intégrés. Ils se renouvellent automatiquement à la fin de chaque période de facturation, sauf annulation via votre identifiant Apple au moins 24 heures avant la fin de la période en cours. Les politiques d'annulation et de remboursement sont régies par les conditions de l'App Store d'Apple.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="legal-article">
+    <span class="legal-number">06</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Data storage</h2>
+      <h2 class="legal-heading" data-lang="fr">Stockage des données</h2>
+      <div class="legal-body">
+        <p data-lang="en">Data is stored locally on your device unless you explicitly export it. Uninstalling the Application may permanently delete this data. You are responsible for creating your own backups if you wish to preserve your configuration.</p>
+        <p data-lang="fr">Les données sont stockées localement sur votre appareil, sauf si vous les exportez explicitement. Désinstaller l'Application peut supprimer définitivement ces données. Il vous revient d'effectuer vos propres sauvegardes si vous souhaitez préserver votre configuration.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="legal-article">
+    <span class="legal-number">07</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Limitation of liability</h2>
+      <h2 class="legal-heading" data-lang="fr">Limitation de responsabilité</h2>
+      <div class="legal-body">
+        <p data-lang="en">The Application is provided "as is" and "as available," without warranty of any kind. To the extent permitted by applicable law, Calm Tech Notebook shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of the Application, including but not limited to data loss, service interruption, or unavailability of third-party sources.</p>
+        <p data-lang="fr">L'Application est fournie « telle quelle » et « selon disponibilité », sans garantie d'aucune sorte. Dans la mesure permise par la loi applicable, Calm Tech Notebook ne saurait être tenu responsable de dommages indirects, accessoires, spéciaux ou consécutifs résultant de l'utilisation de l'Application, y compris, sans s'y limiter, la perte de données, l'interruption de service ou l'indisponibilité de sources tierces.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="legal-article">
+    <span class="legal-number">08</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Applicable law</h2>
+      <h2 class="legal-heading" data-lang="fr">Loi applicable</h2>
+      <div class="legal-body">
+        <p data-lang="en">These Terms are governed by the laws of the province of Quebec and the laws of Canada applicable therein, as well as by the relevant international regulations where applicable. Any dispute arising from these Terms shall be submitted to the exclusive jurisdiction of the courts of the judicial district of Quebec City, unless otherwise required by mandatory consumer-protection laws.</p>
+        <p data-lang="fr">Les présentes conditions sont régies par les lois de la province de Québec et les lois du Canada qui y sont applicables, ainsi que par les règlements internationaux pertinents, le cas échéant. Tout différend découlant des présentes conditions sera soumis à la compétence exclusive des tribunaux du district judiciaire de Québec, sauf disposition contraire de lois impératives de protection du consommateur.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="legal-article">
+    <span class="legal-number">09</span>
+    <div class="legal-content">
+      <h2 class="legal-heading" data-lang="en">Contact</h2>
+      <h2 class="legal-heading" data-lang="fr">Contact</h2>
+      <div class="legal-body">
+        <p data-lang="en">For any legal question, write to <a href="mailto:tristan.audet@proton.me">tristan.audet@proton.me</a>. CalmFeed is published by Calm Tech Notebook, a sole proprietorship registered in Quebec, Canada.</p>
+        <p data-lang="fr">Pour toute question d'ordre juridique, écrivez à <a href="mailto:tristan.audet@proton.me">tristan.audet@proton.me</a>. CalmFeed est publié par Calm Tech Notebook, une entreprise individuelle enregistrée au Québec, au Canada.</p>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html" data-lang="en">Home</a>
+    <a href="index.html" data-lang="fr">Accueil</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html" data-lang="en">Privacy Policy</a>
+    <a href="privacy.html" data-lang="fr">Confidentialité</a>
+    <a href="terms.html" data-lang="en">Terms of Use</a>
+    <a href="terms.html" data-lang="fr">Conditions</a>
+    <a href="https://calmtechnotebook.substack.com" target="_blank">Blog</a>
+  </div>
+  <p class="footer-copy">© 2026 Calm Tech Notebook · CalmFeed</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang-btn]').forEach(b => {
+      b.classList.toggle('active', b.dataset.langBtn === lang);
+    });
+    try { localStorage.setItem('calmfeed-lang', lang); } catch (e) {}
+  }
+
+  (function() {
+    let lang = 'en';
+    try {
+      const saved = localStorage.getItem('calmfeed-lang');
+      if (saved === 'en' || saved === 'fr') {
+        lang = saved;
+      } else if (navigator.language && navigator.language.toLowerCase().startsWith('fr')) {
+        lang = 'fr';
+      }
+    } catch (e) {}
+    setLang(lang);
+  })();
+</script>
+
+</body>
+</html>
